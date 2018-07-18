@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    
+    //test1
+    var num=prompt("请输入一个求算数平方和的整数：");
+    var sum=0,temp=1;
+    /**
+     * 求算数平方和1!+2+...+n!
+     * @param number
+     */
+    function getSumOfSquares(number) {
+        for(var i=1; i<=number; i++){
+            temp=1;
+            for(var j=1; j<=i; j++){
+                temp *= j;
+            }
+            sum += temp;
+        }
+
+        return sum;
+
+    }
+    console.log(num+"的算数平方和为："+getSumOfSquares(num));
+    //test2
+    var n=prompt("请输入一个求斐波那契数列的整数：");
+
+    //递归法
+    /**
+     * 求斐波那契数列的第n个数
+     * @param n
+     */
+    function getFibonacci(n) {
+        if(n==1){
+            return 1;
+        }
+        else if(n==2){
+            return 1;
+        }
+        else{
+            return (getFibonacci(n-2)+getFibonacci(n-1));
+        }
+    }
+    console.log("斐波那契数列的第"+n+"个数: "+getFibonacci(n));
+
+
+
+
+    //test3
+    var theDate=Date();
+    //theDate=prompt("请输入年月日，并以-隔开：");
+    var theDayOfYear=0,daysOfMonth=30;
+
+    /**
+     * 判断某一天是这一年的第几天
+     * @param date
+     */
+    function getTheDayOfYear(date) {
+        var year=date.getFullYear();
+        var month=date.getMonth()+1;
+        var day=date.getDate();
+        for(var i=1; i<month; i++){
+            //4、6、9、11月份30天
+            if((i==4)||(i==6)||(i==9)||(i==11)){
+                daysOfMonth=30;
+            }
+            //2月需判断平年和闰年
+            else if(i==2){
+                if(isLeapYear(year)){
+                    daysOfMonth=29;
+                }
+                else{
+                    daysOfMonth=28;
+                }
+            }
+            //其他月份31天
+            else{
+                daysOfMonth=31;
+            }
+
+            theDayOfYear += i*daysOfMonth;
+        }
+        theDayOfYear += day;
+
+        return theDayOfYear;
+        
+    }
+
+    /**
+     * 判断是否为闰年，是返回true,否则返回false
+     * @param theYear
+     */
+    function isLeapYear(theYear) {
+        if((theYear%100)==0){
+            if((theYear%400)==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            if((theYear%4)==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    console.log(theDate+"是这一年的第"+getTheDayOfYear(theDate)+"天");
+
+</script>
+
+</body>
+</html>

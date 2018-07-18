@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立方体</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            /*border: 1px #333 solid;*/
+            background-color: rgba(1,1,1,0);
+            margin: 200px auto;
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: center;
+            transform: rotateZ(122deg) rotateX(34deg) rotateY(34deg);
+            transition: transform 2s;
+        }
+        .box div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            font-size: 50px;
+            /*border-radius: 50%;*/
+
+            /*border: 1px red solid;*/
+        }
+        .box .top {
+            background-color: rgba(255,0,0,0.3);
+            transform-origin: center;
+            transform: rotateX(90deg) translateZ(100px);
+
+        }
+        .box .down {
+            background-color: rgba(255,165,0,0.3);
+            transform-origin: center;
+            transform: rotateX(90deg) translateZ(-100px);
+
+        }
+        .box .left {
+            background-color: rgba(255,255,0,0.3);
+            transform-origin: center;
+            transform: rotateY(90deg) translateZ(100px);
+
+        }
+        .box .right {
+            background-color: rgba(0,255,0,0.3);
+            transform-origin: center;
+            transform: rotateY(90deg) translateZ(-100px);
+
+        }
+        .box .fore {
+            background-color: rgba(0,127,255,0.3);
+            transform-origin: center;
+            transform: translateZ(100px);
+
+        }
+        .box .back {
+            background-color: rgba(139,255,0,0.3);
+            transform-origin: center;
+            transform: translateZ(-100px);
+
+        }
+        .box:hover {
+            transform-origin: center;
+            transform: rotateZ(3deg) rotateX(224deg) rotateY(-34deg);
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="top">上</div>
+    <div class="down">下</div>
+    <div class="left">左</div>
+    <div class="right">右</div>
+    <div class="fore">前</div>
+    <div class="back">后</div>
+
+</div>
+</body>
+</html>

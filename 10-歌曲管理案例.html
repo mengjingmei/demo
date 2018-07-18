@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>歌曲管理</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: #000;
+        }
+
+        .song_box {
+            width: 800px;
+            margin: 20px auto;
+        }
+        table {
+            width: 100%;
+            border: 1px #1b6d85 solid;
+            text-align: center;
+        }
+        thead {
+            background-color: #1b6d85;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            /*******************需求****************
+             * 1、初始化歌单
+             * 2、输入歌名和歌手信息，点击添加，添加到表格中
+             * 3、输入歌名，点击删除，判断歌单中是否有，有则删除，并且提示删除成功，没有错误提示
+             */
+
+            //使用闭包书写歌单管理函数
+            function songManger() {
+                var songList = [];
+                var obj = {
+                    initSongList:function (initSongList) {
+                        for(var i=0; i<initSongList.length; i++) {
+                            songList.push(initSongList[i]);
+                        }
+                        return songList;
+
+                    },
+                    addSong:function (newSong) {
+                        console.log(newSong);
+                        if(0 <= songList.indexOf(newSong)) {
+                            console.log((songList.indexOf(newSong)));
+                            alert("歌单中已有相同歌曲，不能重复添加！");
+                        }
+                        else {
+                            songList.push(newSong);
+                        }
+                        return songList;
+                    },
+                    removeSong:function (sName) {
+                        var flag = false;
+                        var index = 0;
+                        for(var i=0; i<songList.length; i++) {
+                            if(sName === songList[i].songName) {
+                                flag = true;
+                                index = i;
+                            }
+                        }
+                        if(true === flag) {
+                            songList.splice(index,1);
+                            alert("删除成功！");
+                            return songList;
+                        }
+                        else {
+                            alert("歌单中没有该歌曲！");
+                            return songList;
+                        }
+                    }
+                };
+                return obj;
+            }
+
+            //将songList歌单中的信息添加给元素函数封装
+            function updateTable(element,songObj) {
+                var strHtml = "";
+                for(var i=0 ;i<songObj.length;  i++) {
+                    strHtml += "<tr><td>"+songObj[i].songName+"</td><td>"+songObj[i].singer+"</td><td></td></tr></tr>";
+                }
+                element.innerHTML = strHtml;
+            }
+
+            //初始化歌单信息数组
+            var initArr = [
+                {
+                    songName: "有何不可",
+                    singer: "许嵩"
+                },
+                {
+                    songName: "晴天",
+                    singer: "周杰伦"
+                },
+                {
+                    songName: "旅行的意义",
+                    singer: "陈绮贞"
+                }
+            ];
+            //获取歌单函数处理方法包装的对象
+            var funcObj = songManger();
+            console.log(funcObj);
+            //获取相关元素
+            var songText = document.querySelector("#song");
+            var singerText = document.querySelector("#singer");
+            var addBtn = document.querySelector("#add_song");
+            var removeBtn = document.querySelector("#remove_song");
+            var songTable = document.querySelector("#song_list");
+
+
+            //1、初始化歌单
+            var songObj = funcObj.initSongList(initArr);
+
+            updateTable(songTable,songObj);
+
+            //2、输入歌名和歌手信息，点击添加，添加到表格中
+            addBtn.onclick = function () {
+                //歌曲和歌手信息都不为空
+                if(songText.value && singerText.value) {
+                    //将输入的歌曲和歌手包装成一个对象
+                    var Song = {};
+                    Song.songName = songText.value;
+                    Song.singer = singerText.value;
+
+                    songObj = funcObj.addSong(Song);
+                    console.log(songObj);
+                    updateTable(songTable,songObj);
+                }
+                else {
+                    alert("请输入正确的歌名和歌手信息！");
+                }
+                songText.value = null;
+                singerText.value = null;
+            };
+
+            //3、输入歌名，点击删除，判断歌单中是否有，有则删除，并且提示删除成功，没有错误提示
+            removeBtn.onclick = function () {
+                //歌曲和歌手信息都不为空
+                if(songText.value) {
+                    //将输入的歌曲和歌手包装成一个对象
+                    songObj = funcObj.removeSong(songText.value);
+                    console.log(songObj);
+                    updateTable(songTable,songObj);
+                }
+                else {
+                    alert("请输入要删除的歌曲名！");
+                }
+                songText.value = null;
+                singerText.value = null;
+            };
+
+
+        }
+    </script>
+</head>
+<body>
+<div class="song_box">
+    歌曲名：<input id="song" type="text">
+    歌手：<input id="singer" type="text">
+    <input id="add_song" type="button" value="添加">
+    <input id="remove_song" type="button" value="删除">
+    <table>
+        <thead>
+            <tr>
+                <th>歌曲名称</th>
+                <th>歌手</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="song_list">
+        <tr>
+            <td>有何不可</td>
+            <td>许嵩</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>有何不可</td>
+            <td>许嵩</td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

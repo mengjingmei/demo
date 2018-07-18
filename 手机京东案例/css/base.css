@@ -1,0 +1,49 @@
+/*通用样式*/
+*,::before,::after {
+    /*默认字体大小*/
+    font-size: 14px;
+
+    margin: 0;
+    padding: 0;
+    /*清除默认移动端点击高亮效果*/
+    -webkit-tap-highlight-color: transparent;
+    /*盒子模型*/
+    box-sizing: border-box;
+    /*移动端默认字体sans-serif*/
+    font-family: "微软雅黑",sans-serif;
+}
+
+/*input标签去掉默认样式*/
+input {
+    border: none;
+    -webkit-appearance: none;
+}
+
+/*去掉a链接的下划线*/
+a {
+    text-decoration: none;
+}
+a:link,a:hover,a:visited {
+    color: #fff;
+}
+
+/*去掉列表的行标识*/
+ol,ul {
+    list-style: none;
+}
+
+/*浮动及清除浮动*/
+.f_l {
+    float: left;
+}
+.f_r {
+    float: right;
+}
+.clearfix::before,.clearfix::after {
+    content:"";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    line-height: 0;
+    clear: both;
+}

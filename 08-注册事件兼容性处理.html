@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 400px;
+            height:500px;
+            border: 1px green solid;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            /**************注册事件的方式****************
+             * 1、ele.on事件类型 = 事件处理函数 浏览器各个版本都支持，但是不支持同时注册多个事件  事件处理函数中的this指触发的对象
+             * 2、addEventListener(事件类型，事件处理函数，usercapture)  IE9及以上才支持 事件处理函数中的this指触发的对象
+             * 3、attachEvent(on事件类型，事件处理函数)  IE8及以下才支持 事件处理函数中的this指window
+             */
+                //事件三个阶段：
+                //1、捕获阶段：从外到里，从上到下
+                //2、目标阶段：
+                //3、冒泡阶段：从里到外，从下到上
+                //
+
+                //浏览器兼容性处理写法
+            var div = document.getElementById("div1");
+            function registerEvent1(target,type,handler) {
+                if(target.addEventListener) {
+                    target.addEventListener(type,handler)
+                }
+                else if(target.attachEvent) {
+                    target.attachEvent("on"+type,handler)
+                }
+                else {
+                    target["on"+type] = handler;
+                }
+
+            }
+            // registerEvent1(div,"click",function () {
+            //     alert("送你一个帅哥");
+            // });
+
+            //上面的方法，每次有事件的时候都需要判断浏览器版本，然后调用对应的事件注册方法。
+            //使用闭包解决上面的问题。
+            function getRegisterFunc() {
+                if(window.addEventListener) {
+                    return function(target,type,handler) {
+                        target.addEventListener(type,handler);
+                    };
+
+                }
+                else if(window.attachEvent) {
+                    return function(target,type,handler) {
+                        target.attachEvent("on"+type,handler);
+                        //事件处理函数handler中的this指window改为指向target,这样和另外两种this代表一样的对象了
+                        //并且把window.event这个参数传给它
+                        handler.call(target,[window.event]);
+                    };
+                }
+                else {
+                    return function(target,type,handler) {
+                        target["on"+type] = handler;
+                    };
+
+                }
+
+            }
+            var registerEvent2 = getRegisterFunc(); //getRegisterFunc()只用执行一次，返回该浏览器应该使用的注册事件方法
+            console.log(registerEvent2);
+            //以后就直接用registerEvent2就好了
+            registerEvent2(div,"click",function (e) {
+                alert("送一大美女");
+                console.log(this);
+                console.log(e);
+            });
+
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+<div id="div1">我是一个div哈哈哈</div>
+</body>
+</html>

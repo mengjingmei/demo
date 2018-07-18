@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>尚合shanghe.com</title>
+	<style type="text/css">
+		body,div,ul,li,a,img,input,hr,span{
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 12px;
+		}
+		ul li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			border: 0 none;
+			color: black;
+		}
+		input{
+			border:0 none;
+			outline-style: none;
+		}
+		img{
+			border: 0 none;
+		}
+		.top{
+			width: 980px;
+			height: 35px;
+			margin: 20px auto;
+			line-height: 35px;
+		}
+		
+		input[type="botton"]{
+			width: 30px;
+			height: 30px;
+			vertical-align: top;
+			background: url("images/search2.jpg") right no-repeat;
+
+		}
+		input[type="text"]{
+			width: 165px;
+			height: 30px;
+			vertical-align: top;
+		
+			
+		}
+		.search{
+			
+			width: 195px;
+			height: 30px;
+			border: 1px #aaa solid;
+			float: right;	
+		}
+
+		.sort{
+			height: 50px;
+			border-top: 1px #aaa solid;
+			border-bottom: 1px #aaa solid;
+			background: url("images/nav_bg.png");
+			padding-left:140px;
+		}
+		.sort ul{
+
+		}
+		.sort ul li{
+			display: inline-block;
+			background: url("images/nav_bg-line.png") right no-repeat;
+			padding:17px 30px;
+		}
+		.sort ul li a:link{
+			color: black;
+		}
+		.sort ul li a:hover{
+			color: green;
+		}
+		.main{
+			width: 980px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		.share{
+			height: 36px;
+			border-top:1px #eee solid;
+			border-bottom:1px #eee solid;
+			line-height: 36px;
+			padding-left: 140px;
+			padding-right:140px;
+			background: #efefef;
+			margin-top: 18px;
+			margin-bottom: 18px;
+		}
+		.share img{
+			float: right;
+			padding:9px 2px;
+		}
+		.main1{
+			width: 980px;
+			height: 238px;
+			margin: 0 auto;
+			margin-top: 18px;
+			margin-bottom: 18px;
+			position: relative;
+		}
+		.new,.message,.support{
+			/*display: inline-block;*/
+			/*position: relative;*/
+			height: 238px;
+			border: 1px #efefef solid;
+		}
+		.main1 .new{
+			width: 300px;
+			/*margin-left: 10px;*/
+			background:url("images/home_hot_01.png") center no-repeat;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+		.main1 .new .o,.main1 .new span{
+			position: absolute;
+			left: 3px;
+			top: 10px;
+		}
+		span{
+			text-indent: 2em;
+			color: green;
+		}
+		.main1 .message{
+
+			width: 360px;
+			position: absolute;
+			left: 314px;
+			top: 0px;
+
+		}
+		.main1 .message .o,.main1 .message span{
+			position: absolute;
+			left: 3px;
+			top: 10px;
+		}
+		.main1 .support{
+			width: 290px;
+			position: absolute;
+			left: 690px;
+			top:0;
+		}
+		.main1 .left{
+			position: absolute;
+			left: 32px;
+			top: 110px;
+
+		}
+		.main1 .right{
+			position: absolute;
+			right: 32px;
+			top: 110px;
+
+		}
+		.main1 .support .o,.main1 .support span{
+			position: absolute;
+			left: 3px;
+			top: 10px;
+		}
+		.main1 .message ul{
+			position: absolute;
+			top:40px;
+			left: 18px;
+		}
+		.main1 .message ul li a{
+			display: inline-block;
+			height: 28px;
+			width: 330px;
+			line-height: 24px;
+			border-bottom:1px #ddd dashed;
+		}
+
+		.main1 .support div{
+			position: absolute;
+			top:40px;
+			left: 18px;
+		}
+		.main1 .support ul li a{
+			display: inline-block;
+			height: 18px;
+			width: 270px;
+			text-indent: 1em;
+			line-height: 18px;
+			border-left:3px rgb(38,116,41) solid;
+		}
+		.footer{
+			height: 350px;
+			background: #444;
+		}
+		.footer div{
+			height: 250px;
+			padding-left: 1060px;
+			border-bottom: 1px #555 dashed;
+		}
+		.footer div a{
+			display: block;
+			height: 40px;
+			line-height: 40px;
+
+		}
+		.footer p{
+			text-align:center;
+		}
+		.clearfix:after{
+			content: ".";
+			display: block;
+			height: 0;
+			line-height: 0;
+			visibility: hidden;
+			clear:both;
+	}
+		.clearfix{
+			zoom: 1;
+		}
+	</style>
+</head>
+<body>
+	<!-- 标题搜索 -->
+	<div class="top">
+		<img src="images\logo.jpg">
+		<div class="search">
+			<input type="text" value="请输入..."><input type="botton">	
+		</div>
+		
+	</div>
+	<!-- 分类导航 -->
+	<div class="sort">
+		<ul>
+			<li><a href="#">首页</a></li>
+			<li><a href="#">智能手机</a></li>
+			<li><a href="#">平板电脑</a></li>
+			<li><a href="#">配件</a></li>
+			<li><a href="#">服务支持</a></li>
+			<li><a href="#">联系尚合</a></li>
+		</ul>
+	</div>
+	<!-- 主体显示 -->
+	<div class="main">
+		<img src="images\banner.jpg">
+	</div>
+	<!-- 分享 -->
+	<div class="share">最新公告：尚合Aone智能手机入网证已获取工信部门审批下发。尚合官网
+		<img src="images\zone.png">
+		<img src="images\xinlang.png">
+		<img src="images\weibo.png">
+		<img src="images\renren.png">
+	</div>
+	<!-- 分类信息 -->
+	<div class="main1">
+		<!-- 新品发布 -->
+		<div class="new">
+			<span>新品发布</span>
+			<img class="o" src="images\o.jpg">
+			<img class="left" src="images\left.png">
+			<img class="right" src="images\right.png">
+		</div>
+		<!-- 新闻中心 -->
+		<div class="message">
+			<span>新闻中心</span>
+			<img class="o" src="images\o.jpg">
+			<ul>
+				<li><a  style="color:red" href="#">致歉公告</a></li>
+				<li><a href="#">首批尚合Aonet已全部售馨!</a></li>
+				<li><a href="#">【媒体报导】国产高性价比 尚合Aonet四核手机评测</a></li>
+				<li><a href="#">尚合Aone智能手机入网证已经获工信部门审批下发</a></li>
+				<li><a href="#">我司通过ISO9001:2008国际质量管理体系认证</a></li>
+				<li><a href="#">我司产品已经通过了国家强制性产品3C认证</a></li>
+			</ul>
+		</div>
+        <!-- 技术支持 -->
+		<div class="support">
+			<span>技术与支持</span>
+			<img class="o" src="images\o.jpg">
+			<div>
+				<ul>
+					<li><a href="#">售后服务</a></li>
+					<br>
+					<li><a href="#">投诉与建议</a></li>
+					<br>
+					<li><a href="#">联保网点</a></li>
+					<br>
+					<li><a href="#">常见问题FAQ</a></li>
+				</ul>
+				<p>深圳市汇聚众合科技发展有限公司</p>
+	            <p>服务热线：400-633-7922</p>
+			</div>
+			
+		</div>	
+	</div>
+<!-- 底部 -->
+	<div class="footer">
+		<div>
+			<a href="#">尚合首页</a>
+			<a href="#">返回首页</a>
+		</div>
+		
+		<p>深圳市会居中和优先公司</p>
+	</div>
+	
+</body>
+</html>

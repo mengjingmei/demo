@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        .time {
+            width: 320px;
+            height: 320px;
+            margin: 100px auto;
+            position: relative;
+            background-image: url("images/time.jpg");
+            background-size: 320px 320px;
+        }
+        .hour {
+            width: 60px;
+            height: 60px;
+            border-top: 5px #111 solid;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin:  left top;
+            transform: rotate(-60deg);
+            animation: turn 86400s steps(86400,start) infinite;
+        }
+        .minute {
+            width: 80px;
+            height: 80px;
+            border-top: 3px #111 solid;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin:  left top;
+            transform: rotate(-88deg);
+            animation: turn 3600s steps(3600,start) infinite;
+        }
+        .second {
+            width: 110px;
+            height: 110px;
+            border-top: 2px red solid;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin:  left top;
+            transform: rotate(-90deg);
+            animation: turn 60s steps(60,start) infinite;
+        }
+        @keyframes turn {
+            0% {
+                transform-origin: left top;
+                transform: rotate(-90deg);
+            }
+            100% {
+                transform: rotate(270deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="time">
+    <div class="hour"></div>
+    <div class="minute"></div>
+    <div class="second"></div>
+</div>
+</body>
+</html>

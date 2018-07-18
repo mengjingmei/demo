@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标跟随案例</title>
+    <script src="tools.js"></script>
+    <style type="text/css">
+        body,img {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 2000px;
+            height: 2000px;
+            background-color: rgba(33,33,33,0.5);
+            position: relative;
+        }
+        img {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 1px red solid;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            /**
+             * 需求：
+             * 1、鼠标点击页面的任何位置，图片缓动到该位置
+             */
+
+            /**
+             * 关键步骤：
+             * 1、绑定页面鼠标点击位置document.onclick，
+             * 2、获取图片移动的页面目标位置 pageY= scrollTop+clientY,pageX= scrollLeft+clientX
+             * 3、获取图片自身的位置offsetTop,offsetLeft
+             * 4、图片缓动
+             */
+
+            //1、绑定事件及相关元素
+            var img = document.getElementsByTagName("img")[0];
+            //绑定页面鼠标点击位置document.onclick
+            var timer = null;
+            var localPositionX,localPositionY,targetX,targetY;
+            document.onclick = function (event) {
+
+                //获取图片移动的页面目标位置
+                targetX = event.pageX || (scroll().left + event.clientX); //兼容写法;
+                targetY = event.pageY || (scroll().top + event.clientY);  //
+
+                //清已有的定时器
+                clearInterval(timer);
+                //绑定新的定时器
+                timer = setInterval(function () {
+                    //实时获取图片在页面的自身位置
+                    localPositionX = img.offsetLeft;
+                    localPositionY = img.offsetTop;
+                    //获取步长
+                    var stepX = (targetX - localPositionX) / 10;
+                    var stepY = (targetY - localPositionY) / 10;
+                    //取整
+                    stepX = stepX > 0 ? Math.ceil(stepX) : Math.floor(stepX);
+                    stepY = stepY > 0 ? Math.ceil(stepY) : Math.floor(stepY);
+                    //图片移动
+                    img.style.left = img.offsetLeft + stepX + "px";
+                    img.style.top = img.offsetTop + stepY + "px";
+                    //移动结束，清除定时器
+                    if(Math.abs(targetX - img.offsetLeft) <= Math.abs(stepX) &&
+                        Math.abs(targetY - img.offsetTop) <= Math.abs(stepY)){
+
+                        img.style.left = img.offsetLeft + "px";
+                        img.style.top = img.offsetTop + "px";
+                        clearInterval(timer);
+                    }
+                },30)
+
+
+            }
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+<img src="images/img.jpg" alt="">
+</body>
+</html>

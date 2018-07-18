@@ -1,0 +1,294 @@
+/*最外层容器*/
+.jd_container {
+    width: 100%;
+}
+
+/*1头部通栏*/
+.jd_container .jd_header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 40px;
+    padding-left: 50px;
+    padding-right: 60px;
+    opacity: 0.8;
+    background-color: rgba(249,40,35,1);
+}
+/*1-1头部京东logo*/
+.jd_header .header_logo {
+    /*布局属性*/
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    /*自身属性*/
+    width: 50px;
+    height: 36px;
+    background-image: url("../images/logo.jpg");
+    background-repeat: no-repeat;
+    background-size: 36px 36px;
+
+}
+/*1-2搜索框的放大镜*/
+.jd_header .header_glass {
+    /*布局属性*/
+    position: absolute;
+    left: 52px;
+    top: 6px;
+    /*自身属性*/
+    width: 50px;
+    height: 28px;
+    color: #777;
+    font-size: 18px;
+    line-height: 28px;
+
+}
+/*1-3搜索框*/
+.jd_header .header_search {
+    /*自身属性*/
+    width: 100%;
+    height: 28px;
+    margin-top: 6px;
+    padding-left: 30px;
+    border-radius: 14px;
+}
+/*1-4登录按钮*/
+.jd_header .header_login {
+
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 48px;
+    height: 36px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 36px;
+
+}
+
+/*2轮播图*/
+.jd_container .jd_banner {
+    position: relative;
+    left: 0;
+    top: 40px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+/*2-1轮播图里的图片列表*/
+.jd_banner .banner_images {
+    /*十倍的宽度，横向放十张图片*/
+    width: 1000%;
+}
+.jd_banner .banner_images li {
+    width: 10%;
+}
+.jd_banner .banner_images li a{
+    display: block;
+    width: 100%;
+}
+.jd_banner .banner_images li a img{
+    display: block;
+    width: 100%;
+}
+/*2-2轮播图里的索引标签列表*/
+.jd_banner .banner_index {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -50px;
+}
+.jd_banner .banner_index li {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px #fff solid;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+/*如果li标签有.current标签时，会使用下列样式，注意.current前面没有空格*/
+.jd_banner .banner_index li.current {
+    background-color: #fff;
+}
+
+/*3 菜单导航*/
+.jd_container .jd_nav {
+    position: relative;
+    margin-top: 50px;
+}
+.jd_nav .nav_icon {
+
+    width: 100%;
+    border-radius: 5px;
+}
+.jd_nav .nav_icon li {
+    width: 20%;
+    padding: 10px;
+    text-align: center;
+}
+.jd_nav .nav_icon li a {
+    width: 100%;
+}
+.jd_nav .nav_icon li a img {
+    width: 100%;
+
+}
+.jd_nav .nav_icon li span {
+    width: 100%;
+    font-size: 10px;
+    color: #aaa;
+}
+
+/*4主要内容*/
+.jd_container .jd_main {
+    width: 100%;
+}
+.jd_main .main_content {
+    width: 100%;
+    margin-top: 10px;
+
+}
+/*4-1顶部主要内容*/
+.main_content .content_top {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.main_content .content_top a img {
+    width: 100%;
+}
+/*4-2中间主要内容*/
+.main_content .content_center {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.content_center .center_title {
+    height: 30px;
+    font-size: 20px;
+    color: red;
+    margin-bottom: 2px;
+    padding-left: 10px;
+
+}
+.center_title span {
+    font-size: 14px;
+    color: #666;
+    line-height: 30px;
+
+
+}
+.center_title .countdown {
+    font-size: 12px;
+    color: #333;
+    line-height: 30px;
+}
+
+.content_center .center_list {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+.content_center .center_list li {
+    position: relative;
+    width: 25%;
+    padding: 10px;
+    text-align: center;
+}
+.content_center .center_list li a{
+    width: 100%;
+}
+.content_center .center_list li a img {
+    width: 100%;
+}
+.content_center .center_list li .now_price{
+    display: block;
+    margin: 5px auto;
+    font-size: 14px;
+    color: red;
+}
+.content_center .center_list li .old_price{
+    display: block;
+    margin: 5px auto;
+    color: #bbb;
+}
+.old_price s {
+    font-size: 12px;
+}
+/*4-3底部内容*/
+.main_content .content_bottom {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.content_bottom .bottom_goods {
+    width: 100%;
+    /*collapse: 1px;*/
+}
+.bottom_goods li {
+    position: relative;
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+    border: 1px #ccc solid;
+}
+.bottom_goods li a {
+    width: 100%;
+}
+.bottom_goods li a img {
+    display: block;
+    width: 100%;
+}
+.bottom_goods li .goods_title {
+    display: block;
+    font-size: 16px;
+    /*文字渐变*/
+    background: linear-gradient(to right,red,purple);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.bottom_goods li .goods_description {
+    display: block;
+    font-size: 10px;
+}
+/*5底部*/
+.jd_container .jd_footer {
+    margin-bottom: 120px;
+    width: 100%;
+    height: 100px;
+    background-image: url("../images/footer.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+/*一键返回*/
+.jd_container .jd_back {
+    position: fixed;
+    right: 0;
+    bottom: 140px;
+
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border: 1px #fff solid;
+    background-color: #000;
+}
+.jd_container .jd_back a {
+    font-size: 30px;
+    line-height: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

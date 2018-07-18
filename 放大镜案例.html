@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜案例</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 1000px;
+            height: 800px;
+            margin: 100px;
+            position: relative;
+        }
+        .small {
+            position: absolute;
+            top:0;
+            width: 200px;
+            height: 200px;
+            margin-right: 10px;
+            border: 1px #999 solid;
+            cursor: move;
+        }
+        .big {
+            position: absolute;
+            top:0;
+            left: 220px;
+            width: 400px;
+            height: 400px;
+            border: 1px #999 solid;
+            overflow: hidden;
+            display: none;
+        }
+        .big img {
+            position: absolute;
+        }
+        .mask {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50%;
+            height: 50%;
+            background-color: rgba(255,255,0,0.5);
+            display: none;
+        }
+        img {
+            vertical-align: top;
+        }
+
+    </style>
+
+    <script>
+        window.onload = function () {
+            /**
+             * 需求：
+             * 1、鼠标移动到小盒子small上，mask光标面和大盒子big显示，移开隐藏
+             * 2、mask跟随鼠标在small上移动而移动
+             * 3、大盒子的图片等比例移动
+             */
+
+            /**
+             * 关键步骤:
+             * 1、鼠标移动到小盒子small上，mask光标面和大盒子big显示，移开隐藏
+             *
+             */
+
+            //绑定事件及相关元素
+            var box = document.getElementsByClassName("box")[0];
+            var small = document.getElementsByClassName("small")[0];
+            var mask = small.children[1];
+            var big = document.getElementsByClassName("big")[0];
+            var bigImg = big.children[0];
+
+            //1、鼠标移动到小盒子small上，mask光标面和大盒子big显示，移开隐藏
+            small.onmouseenter = function () {
+                mask.style.display = "block";
+                big.style.display = "block";
+            }
+            small.onmouseleave = function () {
+                mask.style.display = "none";
+                big.style.display = "none";
+            }
+
+            //mask跟随鼠标在small上移动而移动
+            var timer = null;
+            var localPositionX,localPositionY,targetX,targetY,scaleX,scaleY,maskX,maskY;
+            small.onmousemove = function (event) {
+                //获取鼠标在small上的相对位置
+                targetX = (event.pageX || (scroll().left + event.clientX)) - box.offsetLeft;
+                targetY = (event.pageY || (scroll().top + event.clientY)) - box.offsetTop;
+
+                //计算mask移动x，y，超出盒子处理
+                maskX = targetX - mask.offsetWidth/2;
+                maskY = targetY - mask.offsetHeight/2
+                //超边框处理
+                if(maskX < 0){
+                    maskX = 0;
+                }
+                if(maskY < 0){
+                    maskY = 0;
+                }
+                if(maskX > (small.offsetWidth-mask.offsetWidth)){
+                    maskX = small.offsetWidth - mask.offsetWidth;
+                }
+                if(maskY > small.offsetHeight-mask.offsetHeight){
+                    maskY = small.offsetHeight-mask.offsetHeight;
+                }
+                //给定mask位置
+                mask.style.left = maskX + "px";
+                mask.style.top = maskY + "px";
+
+
+                //大盒子做相应的显示
+                //高宽比例
+                scaleX = bigImg.offsetWidth / small.offsetWidth;
+                scaleY = bigImg.offsetHeight / small.offsetHeight;
+
+                bigImg.style.marginLeft = (-scaleX*maskX)+ "px";
+                bigImg.style.marginTop = (-scaleY*maskY) + "px";
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="small">
+        <img  src="images/001.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img src="images/0001.jpg" alt="">
+    </div>
+</div>
+</body>
+</html>

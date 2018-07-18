@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爱心</title>
+    <style>
+        .heart {
+            width: 200px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .heart::before,.heart::after {
+            content: "zhs";
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 0 0;
+            background-color: red;
+            position: absolute;
+            transform: rotate(-50deg);
+        }
+        .heart:after {
+            content: "mjm";
+            left: 100px;
+            /*transform-origin: bottom center;*/
+            transform: rotate(50deg);
+
+        }
+    </style>
+</head>
+<body>
+<div class="heart">
+</div>
+</body>
+</html>
